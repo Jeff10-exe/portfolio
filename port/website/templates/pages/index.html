@@ -1,0 +1,83 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .profile-card {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        font-family: Arial, sans-serif;
+    }
+
+    .profile-text {
+        max-width: 500px;
+    }
+
+    .profile-text h1 {
+        font-size: 38px;
+        margin-bottom: 8px;
+    }
+
+    .profile-text h2 {
+        font-size: 18px;
+        font-weight: normal;
+        color: #555;
+        margin-bottom: 24px;
+    }
+
+    .profile-text p {
+        margin: 10px 0;
+        color: #333;
+        font-size: 15px;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 12px 22px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background-color: #333;
+    }
+
+    .circle-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="profile-card">
+    <div class="profile-text">
+        <h1>{{ name }}</h1>
+        <h2>{{ role }}</h2>
+
+        <p><strong>Phone:</strong> {{ phone }}</p>
+        <p><strong>Experience:</strong> {{ experience }}</p>
+        <p><strong>Address:</strong> {{ address }}</p>
+
+        <a href="{% url 'edit_profile' %}" class="btn">
+            Edit Profile
+        </a>
+    </div>
+
+    <img src="{% static 'images/profile.jpg' %}" alt="Profile Image" class="circle-image">
+</div>
+
+{% endblock %}

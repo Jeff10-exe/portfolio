@@ -1,0 +1,55 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="post" class="register-form">
+    {% csrf_token %}
+
+    <h2>Create an Account</h2>
+
+    <!-- Display form-wide errors (e.g. password mismatch) -->
+    {% if form.non_field_errors %}
+        <div class="error">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <!-- Username -->
+    <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+
+    <!-- Email (if included) -->
+    {% if form.email %}
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    {% endif %}
+
+    <!-- Password -->
+    <div class="form-group">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+    </div>
+
+    <button type="submit" class="btn-primary">Register</button>
+</form>
+
+<a href="{% url 'login' %}">
+    <button type="button">Login</button>
+</a>
+
+{% endblock %}
