@@ -1,83 +1,206 @@
 {% extends 'pages/base.html' %}
-{% load static %}
+
+{% block title %}Home | My Portfolio{% endblock %}
 
 {% block content %}
 
 <style>
-    .profile-card {
-        max-width: 900px;
-        margin: 60px auto;
-        padding: 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 40px;
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        font-family: Arial, sans-serif;
-    }
+    :root {
+    --text-bright: #ffffff;      /* Pure White */
+    --text-sub: #f8fafc;         /* High-contrast Off-white */
+    --primary-blue: #60a5fa;     /* Vibrant Blue */
+    --accent-cyan: #22d3ee;      /* Electric Cyan */
+    --glass-bg: rgba(15, 23, 42, 0.85); /* Darker glass makes light text sharper */
+    --glass-border: rgba(255, 255, 255, 0.25);
+}
 
-    .profile-text {
-        max-width: 500px;
-    }
+/* --- Global Text Clarity --- */
+body {
+    color: var(--text-sub) !important;
+    font-family: 'Inter', sans-serif;
+}
 
-    .profile-text h1 {
-        font-size: 38px;
-        margin-bottom: 8px;
-    }
+/* Force all headings to be pure white and bright */
+h1, h2, h3, .section-title {
+    color: var(--text-bright) !important;
+    font-weight: 800;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+    margin-bottom: 1.5rem;
+}
 
-    .profile-text h2 {
-        font-size: 18px;
-        font-weight: normal;
-        color: #555;
-        margin-bottom: 24px;
-    }
+/* Force all paragraphs to be bright */
+p, .lead, .card-text {
+    color: var(--text-sub) !important;
+    opacity: 1 !important;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
 
-    .profile-text p {
-        margin: 10px 0;
-        color: #333;
-        font-size: 15px;
-    }
+/* --- Hero Specifics --- */
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    background: linear-gradient(to bottom, #ffffff, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    .btn {
-        display: inline-block;
-        margin-top: 24px;
-        padding: 12px 22px;
-        background-color: #000;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-    }
+.hero-lead {
+    font-size: 1.4rem !important;
+    font-weight: 500;
+}
 
-    .btn:hover {
-        background-color: #333;
-    }
+/* --- Links & Buttons --- */
+a {
+    color: var(--accent-cyan) !important;
+    font-weight: 700;
+    transition: 0.3s;
+}
 
-    .circle-image {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
+a:hover {
+    color: var(--text-bright) !important;
+    text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.btn-primary-action {
+    background-color: var(--primary-blue);
+    color: #020617 !important; /* Dark text on bright button for contrast */
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-block;
+}
+
+/* --- Cards & Skills --- */
+.card {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    padding: 3rem;
+    border-radius: 24px;
+}
+
+.card h3 {
+    color: var(--primary-blue) !important;
+}
+
+.skill-tags li {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--accent-cyan) !important;
+    border: 1px solid var(--accent-cyan) !important;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    list-style: none;
+}
+
 </style>
-
-<div class="profile-card">
-    <div class="profile-text">
-        <h1>{{ name }}</h1>
-        <h2>{{ role }}</h2>
-
-        <p><strong>Phone:</strong> {{ phone }}</p>
-        <p><strong>Experience:</strong> {{ experience }}</p>
-        <p><strong>Address:</strong> {{ address }}</p>
-
-        <a href="{% url 'edit_profile' %}" class="btn">
-            Edit Profile
-        </a>
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">Hi, I'm Your Name</h1>
+        <p class="hero-lead">Aspiring Software Developer | T Level Computing Student</p>
+        <div class="hero-btns mt-4">
+            <a href="#projects" class="btn-primary-action">View My Work</a>
+        </div>
     </div>
+</section>
 
-    <img src="{% static 'images/profile.jpg' %}" alt="Profile Image" class="circle-image">
-</div>
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="card"> 
+            <h2>About Me</h2>
+            <p>
+                I am a motivated computing student with experience in Python, Django,
+                and software development projects. I enjoy building practical applications
+                and continuously improving my skills through my T Level studies.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="skills-grid">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio built using Django and Bootstrap, featuring custom CSS Glassmorphism.</p>
+                <ul class="skill-tags">
+                    <li>Django</li>
+                    <li>Bootstrap</li>
+                    <li>CSS3</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Data Analysis</h3>
+                <p>Python and Pandas project focused on cleaning and visualizing real-world datasets.</p>
+                <ul class="skill-tags">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>Matplotlib</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h3>Game Development</h3>
+                <p>A logic-heavy Scratch game featuring boss battles, state machines, and health systems.</p>
+                <ul class="skill-tags">
+                    <li>Logic</li>
+                    <li>Scratch</li>
+                    <li>UI Design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+             <div class="card">
+                <h3>Languages</h3>
+                <ul class="skill-tags">
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>HTML/CSS</li>
+                </ul>
+             </div>
+             <div class="card">
+                <h3>Frameworks</h3>
+                <ul class="skill-tags">
+                    <li>Django</li>
+                    <li>Bootstrap</li>
+                </ul>
+             </div>
+             <div class="card">
+                <h3>Tools</h3>
+                <ul class="skill-tags">
+                    <li>Git/GitHub</li>
+                    <li>Pandas</li>
+                    <li>VS Code</li>
+                </ul>
+             </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5">
+    <div class="container">
+        <div class="card text-center contact-card">
+            <h2>Get In Touch</h2>
+            <p>Interested in collaborating or hiring a T Level student?</p>
+            <div class="mt-4">
+                <p class="contact-info"><strong>Email:</strong> <a href="mailto:yourname@email.com">yourname@email.com</a></p>
+                <p class="contact-info"><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock %}

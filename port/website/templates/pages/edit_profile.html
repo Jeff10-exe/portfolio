@@ -3,20 +3,72 @@
 
 {% block content %}
 
-<h1>Edit Profile</h1>
+<div class="tablet">
+    <div class="tablet-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <h4>   Project Overview</h4>
+    </div>
 
-<form method="post">
-    {% csrf_token %}
+    <div class="tablet-content">
 
-    <input type="text" name="name" placeholder="Full name" required><br><br>
+        <section>
+          
+            <p>
+                I created an animated sunset background that transitions into a night sky with randomly generated stars and occasional shooting stars.
+                The aim was to improve visual appeal while demonstrating the use of HTML, CSS, and JavaScript together.
+            </p>
+        </section>
 
-    <input type="text" name="phone" placeholder="Phone number"><br><br>
+        <section>
+            <h5>🛠 What I Did</h5>
+            <p>
+                The sunset was created using CSS keyframe animations to move the sun below the horizon and darken the sky.
+                Stars were dynamically generated using JavaScript with random sizes, positions, and animation timings.
+                Shooting stars appear at random intervals and fade quickly to mimic real meteor movement.
+            </p>
+        </section>
 
-    <input type="text" name="experience" placeholder="Experience level"><br><br>
+        <section>
+            <h5>💻 Skills & Techniques</h5>
+            <ul>
+                <li>HTML for layered background structure</li>
+                <li>CSS animations and gradients</li>
+                <li>Blur and drop-shadow effects</li>
+                <li>JavaScript DOM manipulation</li>
+                <li>Randomisation for realism</li>
+                <li>Performance optimisation</li>
+            </ul>
+        </section>
 
-    <textarea name="address" placeholder="Address"></textarea><br><br>
+        <section>
+            <h5>⚠️ Challenges</h5>
+            <p>
+                Shooting stars initially felt unrealistic. This was fixed by refining animation timing, easing functions, and reducing frequency.
+                Layering issues were solved using z-index and fixed positioning.
+            </p>
+        </section>
 
-    <button type="submit">Save Changes</button>
-</form>
+        <section>
+            <h5>📈 What I Learned</h5>
+            <p>
+                This project improved my understanding of CSS animations and how JavaScript can enhance UI effects while remaining subtle.
+            </p>
+        </section>
+
+        <section>
+            <h5>🚀 Future Improvements</h5>
+            <ul>
+                <li>Real-world time-based day/night cycle</li>
+                <li>User toggle for animations</li>
+                <li>Low-power device optimisation</li>
+                <li>Exploring Three.js</li>
+            </ul>
+        </section>
+
+    </div>
+</div>
+
 
 {% endblock %}
